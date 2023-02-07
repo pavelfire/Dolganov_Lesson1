@@ -31,27 +31,23 @@ fun PersonScreen() {
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        OutlinedTextField(
+            value = name,
+            onValueChange = { text ->
+                name = text
+            },
+        )
         Row(
             modifier = Modifier.fillMaxWidth()
         ) {
-            Column() {
-                OutlinedTextField(
-                    value = name,
-                    onValueChange = { text ->
-                        name = text
-                    },
-                    //modifier = Modifier.weight(1f)
-                )
-                OutlinedTextField(
-                    value = phone.toString(),
-                    onValueChange = { value ->
-                        value.drop(1).toIntOrNull()?.let {
-                            phone = "+$it"
-                        }
-                    },
-                    //modifier = Modifier.weight(1f)
-                )
-            }
+            OutlinedTextField(
+                value = phone.toString(),
+                onValueChange = { value ->
+                    value.drop(1).toIntOrNull()?.let {
+                        phone = "+$it"
+                    }
+                },
+            )
 
             Spacer(modifier = Modifier.width(16.dp))
             Button(
