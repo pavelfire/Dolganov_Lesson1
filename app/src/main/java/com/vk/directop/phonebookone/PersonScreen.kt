@@ -1,11 +1,6 @@
 package com.vk.directop.phonebookone
 
-import android.Manifest
-import android.Manifest.permission.CALL_PHONE
 import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -18,10 +13,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityCompat.requestPermissions
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 
 
 @Composable
@@ -53,7 +44,7 @@ fun PersonScreen(context: Context) {
             modifier = Modifier.fillMaxWidth()
         ) {
             OutlinedTextField(
-                value = phone.toString(),
+                value = phone,
                 onValueChange = { value ->
                     value.drop(1).toIntOrNull()?.let {
                         phone = "+$it"
@@ -101,7 +92,7 @@ fun PersonList(
                     .fillMaxWidth()
                     .padding(8.dp)
                     .clickable {
-                        Toast.makeText(context, "Call to ${currentName.phone}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "To do call to ${currentName.phone}", Toast.LENGTH_LONG).show()
                     }
             )
             Divider()
