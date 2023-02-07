@@ -44,7 +44,7 @@ fun PersonScreen(context: Context) {
             modifier = Modifier.fillMaxWidth()
         ) {
             OutlinedTextField(
-                value = phone.toString(),
+                value = phone,
                 onValueChange = { value ->
                     value.drop(1).toIntOrNull()?.let {
                         phone = "+$it"
@@ -92,7 +92,7 @@ fun PersonList(
                     .fillMaxWidth()
                     .padding(8.dp)
                     .clickable {
-                        Toast.makeText(context, "Call to ${currentName.phone}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "To do call to ${currentName.phone}", Toast.LENGTH_LONG).show()
                     }
             )
             Divider()
