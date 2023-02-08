@@ -40,6 +40,9 @@ fun PersonScreen(context: Context) {
             onValueChange = { text ->
                 name = text
             },
+            label = {
+                Text("Name")
+            }
         )
         Row(
             modifier = Modifier.fillMaxWidth()
@@ -51,6 +54,9 @@ fun PersonScreen(context: Context) {
                         phone = "+$it"
                     }
                 },
+                label = {
+                    Text("Phone")
+                }
             )
 
             Spacer(modifier = Modifier.width(16.dp))
@@ -80,6 +86,7 @@ fun PersonList(
         items(names) { currentName ->
             Text(
                 text = currentName.name,
+
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
