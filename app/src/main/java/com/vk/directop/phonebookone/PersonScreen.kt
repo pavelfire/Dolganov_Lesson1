@@ -12,6 +12,7 @@ import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 
@@ -39,6 +40,9 @@ fun PersonScreen(context: Context) {
             onValueChange = { text ->
                 name = text
             },
+            label = {
+                Text("Name")
+            }
         )
         Row(
             modifier = Modifier.fillMaxWidth()
@@ -50,6 +54,9 @@ fun PersonScreen(context: Context) {
                         phone = "+$it"
                     }
                 },
+                label = {
+                    Text("Phone")
+                }
             )
 
             Spacer(modifier = Modifier.width(16.dp))
@@ -79,12 +86,22 @@ fun PersonList(
         items(names) { currentName ->
             Text(
                 text = currentName.name,
+
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
                     .clickable {
                         Toast.makeText(context, "Name is ${currentName.name}", Toast.LENGTH_SHORT).show()
-                    }
+                    },
+                color = when(currentName.name.length){
+                    1 -> Color.Red
+                    2 -> Color.Black
+                    3 -> Color.Cyan
+                    4 -> Color.Green
+                    5 -> Color.Magenta
+                    7 -> Color.Gray
+                    else -> Color.DarkGray
+                }
             )
             Text(
                 text = currentName.phone,
